@@ -1,0 +1,25 @@
+
+
+<div class="banner">
+    <img src="../../../../assets/images/banners/banner-1.jpg" alt="" class="">
+    <h1>Masculino</h1>
+</div>
+
+
+<div class="container-fluid pb-4">
+    <div class="row rowCards">
+        <div class="col-12">
+            <button type="button" class="btn btn-{{colorTShirts}} mb-3 col-4 filterButton" (click)="showProductByType('tshirts')">{{titleTShirts}}</button>
+            <button type="button" class="btn btn-{{colorPants}} mb-3 col-4 filterButton" (click)="showProductByType('pants')">{{titlePants}}</button>
+            <button type="button" class="btn btn-{{colorShoes}} mb-3 col-4 filterButton" (click)="showProductByType('shoes')">{{titleShoes}}</button>
+        </div>
+        <ng-container *ngFor="let product of products;">
+            <ng-container *ngIf="product.type=='male'">
+                <app-card-product [data]="product" class="col card-0" *ngIf="((tshirts)&&(product.tshirt==true))"></app-card-product>
+                <app-card-product [data]="product" class="col card-0" *ngIf="((pants)&&(product.pant==true))"></app-card-product>
+                <app-card-product [data]="product" class="col card-0" *ngIf="((shoes)&&(product.shoe==true))"></app-card-product>
+            </ng-container>
+        </ng-container>
+    </div>
+</div>
+

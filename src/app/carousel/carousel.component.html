@@ -1,0 +1,16 @@
+
+<p-carousel [value]="products" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+    <ng-template let-product pTemplate="item">
+        <div class="product-item">
+            <div class="product-item-content">
+                <div class="mb-3 cursor_1" routerLink="/news">
+                    <img src="{{product.image}}" class="product-image img-fluid"/>
+                </div>
+                <div>
+                    <h4 class="mb-1">Nombre: {{product.name}}</h4>
+                    <h6 class="mt-0 mb-3">Precio: ${{product.price}}</h6>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-carousel>

@@ -1,0 +1,39 @@
+
+
+
+.card{
+    border: 1px solid #3232b3;
+    box-shadow: 0.1em 0.1em 1em #3232b3;
+    margin: auto;
+}
+
+.card-header{
+    border: 1px #3232b3;
+    background-color: #292999;
+    font-weight: bolder;
+    color: white;
+}
+
+.card-body{
+    border-top: 1px solid #3232b3;
+    border-bottom: 1px solid #3232b3;
+    min-height: 175px;
+    background-color: #5656d1;
+}
+
+.cardText{
+    font-weight: bold;
+}
+
+.card-footer{
+    background-color: #292999;
+    padding: 0 0;
+}
+
+.button_1{
+    width: 100%;
+    border-radius: 0px;
+    border: none;
+    background-color: #292999;
+}
+

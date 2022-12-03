@@ -1,0 +1,17 @@
+
+
+<div class="card" style="width: 18rem;">
+  <div class="card-header" *ngIf="data.news==true">
+    Novedad
+  </div>
+  <img class="card-img-top" src="{{data.image}}" alt="Card image cap">
+  <div class="card-body">
+    <h4 class="card-title">{{data.name}}</h4>
+    <h5 class="card-text" *ngIf="data.description">{{data.description}}</h5>
+    <p>${{data.price}}</p>
+  </div>
+  <div class="card-footer">
+    <button pButton class="button_1" label="Agregar al Carrito"></button>
+  </div>
+</div>
+

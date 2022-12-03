@@ -1,0 +1,85 @@
+
+<div class="banner">
+    <img src="../../../../assets/images/banners/banner-1.jpg" alt="">
+    <h1>Novedades</h1>
+</div>
+
+<div class="container-fluid pb-4 container_0">
+    <div class="row">
+        <div class="col-6">
+            <button pButton class="col-12 mb-4 filterButton" label="Filtrar por Genero" (click)="showFilter('gender')" (click)="showSuportView('gender')"></button>
+            <ng-container *ngIf="(filterGender==true)">
+                <button type="button" class="btn btn-{{colorMale}} col-12 mb-2" (click)="showProductByGender('male')">{{titleMale}}</button>
+                <button type="button" class="btn btn-{{colorFemale}} col-12 mb-2" (click)="showProductByGender('female')">{{titleFemale}}</button>
+                <button type="button" class="btn btn-{{colorKids}} col-12 mb-3" (click)="showProductByGender('kids')">{{titleKids}}</button>
+            </ng-container>
+        </div>
+        <div class="col-6">
+            <button pButton class="col-12 mb-4 filterButton" label="Filtrar por Tipo" (click)="showFilter('type')" (click)="showSuportView('type')"></button>
+            <ng-container *ngIf="(filterType==true)">
+                <button type="button" class="btn btn-{{colorTShirts}} col-12 mb-2" (click)="showProductByType('tshirts')">{{titleTShirts}}</button>
+                <button type="button" class="btn btn-{{colorPants}} col-12 mb-2" (click)="showProductByType('pants')">{{titlePants}}</button>
+                <button type="button" class="btn btn-{{colorShoes}} col-12 mb-3" (click)="showProductByType('shoes')">{{titleShoes}}</button>
+            </ng-container>
+        </div>
+        <ng-container *ngFor="let product of products;">
+            <ng-container *ngIf="(prueba==true)">
+                <app-card-product [data]="product" class="col card-0" *ngIf="product.news==true"></app-card-product>
+            </ng-container>
+            <ng-container *ngIf="(filterGender==true)">
+                <app-card-product [data]="product" class="col card-0" *ngIf="((male)&&(product.type=='male')&&(product.news==true))"></app-card-product>
+                <app-card-product [data]="product" class="col card-0" *ngIf="((female)&&(product.type=='female')&&(product.news==true))"></app-card-product>
+                <app-card-product [data]="product" class="col card-0" *ngIf="((kids)&&(product.type=='kids')&&(product.news==true))"></app-card-product>
+            </ng-container>
+            <ng-container *ngIf="(filterType==true)">
+                <app-card-product [data]="product" class="col card-0" *ngIf="((tshirts)&&(product.tshirt==true)&&(product.news==true))"></app-card-product>
+                <app-card-product [data]="product" class="col card-0" *ngIf="((pants)&&(product.pant==true)&&(product.news==true))"></app-card-product>
+                <app-card-product [data]="product" class="col card-0" *ngIf="((shoes)&&(product.shoe==true)&&(product.news==true))"></app-card-product>
+            </ng-container>
+        </ng-container>
+    </div>
+</div>
+
+<!--<div class="banner-0">
+    <img src="../../../../assets/images/banners/banner-1.jpg" alt="" class="banner">
+    <h1>Novedades</h1>
+</div>
+
+<div class="container-fluid pb-4 container_0">
+    <div class="row">
+        <div class="col-6">
+            <button type="button" class="btn btn-{{colorGender}} col-12 mb-4 filterButton" (click)="showFilter('gender')" (click)="showSuportView('gender')">Filtrar por Genero</button>  
+                <button type="button" class="btn btn-{{colorMale}} col-12 mb-2" (click)="showProductByGender('male')">{{titleMale}}</button>
+                <button type="button" class="btn btn-{{colorFemale}} col-12 mb-2" (click)="showProductByGender('female')">{{titleFemale}}</button>
+                <button type="button" class="btn btn-{{colorKids}} col-12 mb-3" (click)="showProductByGender('kids')">{{titleKids}}</button>
+            </ng-container>
+        </div>
+        <div class="col-6">
+            <button type="button" class="btn btn-{{colorType}} col-12 mb-4 filterButton" (click)="showFilter('type')" (click)="showSuportView('type')">Filtrar por Tipo</button>
+            <ng-container *ngIf="(filterType==true)">
+                <button type="button" class="btn btn-{{colorTShirts}} col-12 mb-2" (click)="showProductByType('tshirts')">{{titleTShirts}}</button>
+                <button type="button" class="btn btn-{{colorPants}} col-12 mb-2" (click)="showProductByType('pants')">{{titlePants}}</button>
+                <button type="button" class="btn btn-{{colorShoes}} col-12 mb-3" (click)="showProductByType('shoes')">{{titleShoes}}</button>
+            </ng-container>
+        </div>
+        <ng-container *ngFor="let product of products;">
+            <ng-container *ngIf="(prueba==true)">
+                <app-card-product [data]="product" class="col card-0"></app-card-product>
+            </ng-container>
+            <ng-container *ngIf="(filterGender==true)">
+                <app-card-product [data]="product" class="col card-0" *ngIf="((male)&&(product.type=='male')&&(product.news==true))"></app-card-product>
+                <app-card-product [data]="product" class="col card-0" *ngIf="((female)&&(product.type=='female')&&(product.news==true))"></app-card-product>
+                <app-card-product [data]="product" class="col card-0" *ngIf="((kids)&&(product.type=='kids')&&(product.news==true))"></app-card-product>
+            </ng-container>
+            <ng-container *ngIf="(filterType==true)">
+                <app-card-product [data]="product" class="col card-0" *ngIf="((tshirts)&&(product.tshirt==true)&&(product.news==true))"></app-card-product>
+                <app-card-product [data]="product" class="col card-0" *ngIf="((pants)&&(product.pant==true)&&(product.news==true))"></app-card-product>
+                <app-card-product [data]="product" class="col card-0" *ngIf="((shoes)&&(product.shoe==true)&&(product.news==true))"></app-card-product>
+            </ng-container>
+        </ng-container>
+    </div>
+</div>-->
+
+
+
+

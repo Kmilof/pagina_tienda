@@ -1,0 +1,85 @@
+
+<div class="container_0">
+
+    <div class="divHeader">
+        <h1>Lista de Productos</h1>
+        <button pButton class="button" (click)="showModal()" label="Agregar Producto"></button>
+    </div>
+
+
+    <div class="row">
+        <ng-container *ngFor="let product of products;">
+            <div class="card m-4 col-4" style="width: 18rem;">
+                <img src="{{product.image}}" alt="" style="height: 20rem;">
+                <div class="card-body">
+                    <p class="card-title"><span class="cardText">Nombre:</span> {{product.name}}</p>
+                    <p class="card-text"><span class="cardText">Descripcion:</span> {{product.description}}</p>
+                    <p class="card-text"><span class="cardText">Precio:</span> {{product.price}}</p>
+                    <p class="card-text"><span class="cardText">Tipo:</span> {{product.type}}</p>
+                    <p class="card-text"><span class="cardText">Novedad:</span> {{product.news}}</p>
+                    <p class="card-text"><span class="cardText">Remera:</span> {{product.tshirt}}</p>
+                    <p class="card-text"><span class="cardText">Pantalon:</span> {{product.pant}}</p>
+                    <p class="card-text"><span class="cardText">Zapatos:</span> {{product.shoe}}</p>
+                    <p class="card-text"><span class="cardText">ID:</span> {{product.id}}</p>
+                </div>
+                <div class="card-footer">
+                    <button pButton class="mb-2 mf-1 mr-1 button" (click)="showDelete(product)"  label="Eliminar Producto"></button>
+                    <button pButton class="mb-2 mf-1 mr-1 button" (click)="showEdit(product)" label="Editar Producto"></button>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    
+    <p-dialog header="{{textButton}}" [(visible)]="modalVisible">
+        <form [formGroup]="newProduct" class="formGroup">
+            <img [src]="image" alt="No hay Imagen" style="height: 10rem">
+            <span class="p-float-label mt-4">
+                <input id="float-input-lg" input="text" pInputText formControlName="name">
+                <label for="float-input">Nombre</label>
+            </span>
+            <span class="p-float-label mt-4">
+                <input id="float-input-lg" input="text" pInputText formControlName="description">
+                <label for="float-input">Descripcion</label>
+            </span>
+            <span class="p-float-label mt-4">
+                <input id="float-input-lg" input="text" pInputText formControlName="price">
+                <label for="float-input">Precio</label>
+            </span>
+            <span class="p-float-label mt-4">
+                <input id="float-input-lg" input="text" pInputText formControlName="type">
+                <label for="float-input">Tipo</label>
+            </span>
+            <span class="p-float-label mt-4">
+                <input id="float-input-lg" type="checkbox" checked="false" formControlName="news">
+                <label for="float-input">Novedad</label>
+            </span>
+            <span class="p-float-label mt-4">
+                <input id="float-input-lg" type="checkbox" checked="false" formControlName="tshirt">
+                <label for="float-input">Remera</label>
+            </span>
+            <span class="p-float-label mt-4">
+                <input id="float-input-lg" type="checkbox" checked="false" formControlName="pant">
+                <label for="float-input">Pantalon</label>
+            </span>
+            <span class="p-float-label mt-4">
+                <input id="float-input-lg" type="checkbox" checked="false" formControlName="shoe">
+                <label for="float-input">Zapatos</label>
+            </span>
+            <span class="p-float-label mt-3 mb-3">
+                <input type="file" accept="image/*" (change)="loadImage($event)">
+            </span>
+            <button pButton class="button" (click)="addProduct()" label="{{textButton}}" *ngIf="addVisible"></button>
+            <button pButton class="button" (click)="updateProduct()" label="Actualizar Producto" *ngIf="editVisible"></button>
+        </form>
+    </p-dialog>
+
+    <p-dialog [(visible)]="deleteVisible" [style]="{width: '50vw'}" class="dialog_0">
+        <form [formGroup]="newProduct">
+            <span class="p-float-label mb-2">
+                <h2>Desea Eliminar el Producto</h2>
+            </span>
+            <button pButton class="button mb-2" (click)="deleteProduct()" (click)="showConfirm()" label="Eliminar Producto"></button>
+            <button pButton class="button" (click)="showConfirm()" label='Cancelar'></button>
+        </form>
+    </p-dialog>
+</div>
